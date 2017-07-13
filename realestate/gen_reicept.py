@@ -1,5 +1,4 @@
-#!/usr/bin/env python
-#-*- coding: utf-8 -*-
+# coding: utf-8
 
 import time
 import io
@@ -36,8 +35,8 @@ def reicept(stream, reicept_info):
     end_date        = "/".join(map(lambda x: str(x), [end_day, month, year]))
     month_and_year  = "-".join([months[month-1], str(year)])
     
-    doc = SimpleDocTemplate(stream,pagesize=letter,
-                        rightMargin=72,leftMargin=72,
+    doc = SimpleDocTemplate(stream,pagesize=letter,\
+                        rightMargin=72,leftMargin=72,\
                         topMargin=72,bottomMargin=18)
                         
     styles=getSampleStyleSheet()
@@ -51,28 +50,17 @@ def reicept(stream, reicept_info):
     Story.append(Spacer(1, 8))  
     Story.append(Paragraph('<para alignment="center">%s</para>' % month_and_year, styles["Heading1"]))
     Story.append(Spacer(1, 50))
-    ptext = '<font size=12>Nous soussignés, %s, propriétaires du logement situé au %s - Appartement n°%s, donné en location à \
+    ptext = u'<font size=12>Nous soussignés, %s, propriétaires du logement situé au %s - Appartement n°%s, donné en location à \
     %s, déclarons avoir reçu de celle-ci à titre de loyer et charges \
-    pour la période du %s au %s la somme de %s lui en donnons quittance.</font>' % (leaser_name, 
-                                                                                    flat_address,
-                                                                                    flat_number,
-                                                                                    roomer_name,
-                                                                                    start_date,
-                                                                                    end_date,
-                                                                                    full_price)
-    
-    
+    pour la période du %s au %s la somme de %s lui en donnons quittance.</font>' % (leaser_name, flat_address, flat_number, roomer_name,start_date, end_date, full_price)
     Story.append(Paragraph(ptext, styles["Justify"]))
     Story.append(Spacer(1, 12))
-    ptext = '<font size=12>Cette somme se répartit de la façon suivante :\
-                                            %s de loyer et %s de charges.</font>' % (price, 
-                                                                                    charges)
+    ptext = u'<font size=12>Cette somme se répartit de la façon suivante : %s de loyer et %s de charges.</font>' % (price,charges)
                                                                                                     
     
     Story.append(Paragraph(ptext, styles["Justify"]))
     Story.append(Spacer(1, 30))
-    ptext = '<font size=12>Fait à %s, le  %s</font>' % (signature_city,
-                                                        time.strftime('%d/%m/%Y'))
+    ptext = u'<font size=12>Fait à %s, le  %s</font>' % (signature_city,time.strftime('%d/%m/%Y'))
      
     Story.append(Paragraph(ptext, styles["Normal"]))
     Story.append(Spacer(1, 12))     
@@ -96,3 +84,5 @@ def reicept_with_default(stream, reicept_info):
         _,reicept_info['end_day'] = monthrange(reicept_info['year'],reicept_info['month'])
         
     return reicept(stream, reicept_info)
+
+    

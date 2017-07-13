@@ -1,0 +1,4 @@
+*.pyc
+test_local/*
+templates/*
+*.png

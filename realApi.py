@@ -43,7 +43,17 @@ def gencontract():
     #response.headers['Content-Disposition'] = "attachment; filename="+ "pdfname"
     #response.mimetype = 'application/pdf'
     #return response
-    
+
+#curl  http://127.0.0.1:5000/gen_caution
+@app.route('/gen_caution', methods = ['POST'])
+def gencausion():
+    if request.headers['Content-Type'] != 'application/json':
+        return "Unsupported Media Type"
+
+    contract_info = request.json
+    return contract("caution_template.html", contract_info)
+
+      
 
 if __name__ == "__main__":
     app.run(debug=True)
