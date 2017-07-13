@@ -14,7 +14,6 @@ pbr==3.1.1
 Pillow==3.1.2
 reportlab==3.4.0
 requests==2.18.1
-scipy==0.17.0
 scour==0.32
 six==1.10.0
 stevedore==1.24.0
