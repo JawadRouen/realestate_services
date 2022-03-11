@@ -10,7 +10,7 @@ itsdangerous==0.24
 Jinja2==2.9.6
 MarkupSafe==1.0
 pbr==3.1.1
-Pillow==6.2.0
+Pillow==9.0.1
 reportlab==3.4.0
 requests==2.18.1
 scour==0.32
